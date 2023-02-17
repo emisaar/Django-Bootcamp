@@ -3,3 +3,6 @@ def login_success():
 
 def login_error():
     return {'error': 'Invalid credentials'}
+
+def login_failed():
+    return {'error': 'Login failed'}

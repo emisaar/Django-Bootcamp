@@ -1,8 +1,13 @@
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render
-from gameapi.methods.User import users_action
+
+from gameapi.methods.Auth import (login_method)
+from gameapi.methods.User import users_actions
 
 # Create your views here.
 @csrf_exempt
 def register(request):
-    return users_action(request=request)
+    return users_actions(request=request)
+
+@csrf_exempt
+def login(request):
+    return login_method(request=request)

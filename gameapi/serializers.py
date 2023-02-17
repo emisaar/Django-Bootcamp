@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User
+from .models import User, Session
 
 import bcrypt
 
@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
         managed = True
         model = User
         fields = '__all__'
-        extra_kwargs = {'password': {'write_only': True}}
+        # extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         bytePwd = validated_data['password'].encode('utf-8')
@@ -27,3 +27,11 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
         
+class SessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        managed = True
+        model = Session
+        fields = '__all__'
+
+    def __str__(self):
+        return self.jwt

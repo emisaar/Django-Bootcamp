@@ -3,7 +3,7 @@ from rest_framework.parsers import JSONParser
 
 from gameapi.serializers import UserSerializer
 
-def users_action(request):
+def users_actions(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
 
