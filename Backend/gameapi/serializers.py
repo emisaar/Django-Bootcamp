@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User, Session
+from .models import User, Session, Company
 
 import bcrypt
 
@@ -35,3 +35,9 @@ class SessionSerializer(serializers.ModelSerializer):
 
     def __str__(self):
         return self.jwt
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        managed = True
+        model = Company
+        fields = '__all__'

@@ -24,6 +24,7 @@ class Session(models.Model):
 class Company(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
+    country = models.CharField(max_length=50)
     created_at = models.DateTimeField(default=timezone.now)
 
 class Game(models.Model):

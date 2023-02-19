@@ -2,6 +2,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from gameapi.methods.Auth import (login_method, logout_method)
 from gameapi.methods.Users import user_actions, users_actions
+from gameapi.methods.Companies import company_actions, companies_actions
 
 # Create your views here.
 
@@ -24,3 +25,12 @@ def login(request):
 @csrf_exempt
 def logout(request):
     return logout_method(request=request)
+
+# Create new company or Get all companies
+@csrf_exempt
+def companies_view(request):
+    return companies_actions(request=request)
+
+@csrf_exempt
+def company_view(request, pk):
+    return company_actions(request=request, pk=pk)

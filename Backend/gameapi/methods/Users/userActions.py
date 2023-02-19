@@ -4,13 +4,13 @@ from django.http import JsonResponse
 from gameapi.models import User
 from gameapi.serializers import UserSerializer
 
-from gameapi.variables.responses import user_not_found, user_deleted
+from gameapi.variables.responses import not_found, resource_deleted
 
 def user_actions(request, pk):
     try:
         user_obj = User.objects.get(pk=pk)
     except User.DoesNotExist:
-        return JsonResponse(user_not_found, status=404)
+        return JsonResponse(not_found, status=404)
 
     serialized_user = UserSerializer(user_obj)
 
@@ -33,6 +33,6 @@ def user_actions(request, pk):
 
     elif request.method == 'DELETE': # Delete user
         user_obj.delete()
-        return JsonResponse(user_deleted(), status=204)
+        return JsonResponse(resource_deleted(), status=204)
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)

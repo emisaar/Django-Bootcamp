@@ -13,8 +13,8 @@ def logout_success():
 def not_allowed():
     return {'error': 'Method not allowed'}
 
-def user_not_found():
-    return {'error': 'User not found'}
+def not_found():
+    return {'error': 'Resource was not found.'}
 
-def user_deleted():
+def resource_deleted():
     return {'success': 'User deleted'}
