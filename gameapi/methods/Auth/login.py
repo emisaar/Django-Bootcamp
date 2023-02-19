@@ -15,6 +15,7 @@ from datetime import datetime
 def login_method(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
+        print(data)
         email = data['email']
         password = data['password'].encode("utf-8")
         
@@ -24,6 +25,7 @@ def login_method(request):
             return JsonResponse(login_error, status=405)
 
         user = UserSerializer(user_obj)
+        print(user.data)
         print(user.data['password'].encode("utf-8"))
     
         if bcrypt.checkpw(password, user.data['password'].encode("utf-8")):
@@ -41,7 +43,7 @@ def login_method(request):
             session = SessionSerializer(data=sessionData)
             if session.is_valid():
                 session.save()
-            return JsonResponse(session.data, status=200)
+            return JsonResponse({'message': 'Login successful', 'jwt': encoded_jwt}, status=200)
         return JsonResponse(login_error, status=405)
 
     else:
