@@ -22,4 +22,4 @@ def logout_method(request):
             return JsonResponse(logout_success(), status=201)
 
     else:
-        return JsonResponse(logout_success(), status=405)
+        return JsonResponse(not_allowed(), status=405)
