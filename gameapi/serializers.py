@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User, Session, Company
+from .models import User, Session, Company, Genre, Videogame
 
 import bcrypt
 
@@ -41,3 +41,24 @@ class CompanySerializer(serializers.ModelSerializer):
         managed = True
         model = Company
         fields = '__all__'
+
+    def __str__(self):
+        return self.name
+
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        managed = True
+        model = Genre
+        fields = '__all__'
+
+    def __str__(self):
+        return self.genre_name
+
+class VideogameSerializer(serializers.ModelSerializer):
+    class Meta:
+        managed = True
+        model = Videogame
+        fields = '__all__'
+
+    def __str__(self):
+        return self.title
