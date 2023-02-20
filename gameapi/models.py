@@ -21,35 +21,51 @@ class Session(models.Model):
     sign_in = models.CharField(max_length=120)
     sign_out = models.CharField(max_length=120)
 
+    def __str__(self):
+        return self.jwt
+
 class Company(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
+    company_name = models.CharField(max_length=255)
     country = models.CharField(max_length=50)
     created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.company_name
+
+    class Meta:
+        verbose_name_plural = "Companies"
 
 class Genre(models.Model):
     id = models.AutoField(primary_key=True)
     genre_name = models.CharField(max_length=50)
     created_at = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.genre_name
+
 class Videogame(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/videogames')
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=timezone.now)
 
-class VideogameImage(models.Model):
-    id = models.AutoField(primary_key=True)
-    videogame = models.ForeignKey(Videogame, on_delete=models.CASCADE)
-    image_name = models.CharField(max_length=255)
-    url = models.CharField(max_length=255)
-    uploaded_at = models.DateTimeField(default=timezone.now)
-
     def __str__(self):
-        return {
-            self.image_name
-        }
+        return self.title
+
+# class VideogameImage(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     videogame = models.ForeignKey(Videogame, on_delete=models.CASCADE)
+#     image_name = models.CharField(max_length=255)
+#     url = models.CharField(max_length=255)
+#     uploaded_at = models.DateTimeField(default=timezone.now)
+
+    # def __str__(self):
+    #     return {
+    #         self.image_name
+    #     }
 
 class Review(models.Model):
     id = models.AutoField(primary_key=True)
