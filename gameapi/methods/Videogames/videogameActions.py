@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 
-from gameapi.models import Videogame
+from gameapi.models import Videogame, Company, Genre
 from gameapi.serializers import VideogameSerializer
 
 from gameapi.variables.responses import not_found
@@ -17,7 +17,15 @@ def videogame_actions(request, pk):
 
     if request.method == 'GET':
         videogame_data = serialized_videogame.data
-        data_dict = {'videogame': videogame_data}
+        company_name = Company.objects.get(pk=videogame_data['company']).company_name
+        genre_name = Genre.objects.get(pk=videogame_data['genre']).genre_name
+        data_dict = {
+            'id': videogame_data['id'],
+            'title': videogame_data['title'],
+            'company': company_name,
+            'genre': genre_name,
+            'created_at': videogame_data['created_at']    
+        }
         return JsonResponse(data_dict, status=200)
 
     elif request.method == 'PUT':
