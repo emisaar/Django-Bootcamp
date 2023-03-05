@@ -14,4 +14,5 @@ urlpatterns = [
     path('videogames/', views.videogames_view, name='videogames_actions'),
     path('videogame/<int:pk>', views.videogame_view, name='videogame_actions'),
     path('favorites/', views.favorites_view, name='favorites_actions'),
+    path('reviews/', views.reviews_view, name='reviews_actions'),
 ]

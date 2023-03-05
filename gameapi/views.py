@@ -6,7 +6,7 @@ from gameapi.methods.Companies import company_actions, companies_actions
 from gameapi.methods.Genres import genres_actions
 from gameapi.methods.Videogames import videogames_actions, videogame_actions
 from gameapi.methods.Favorites import favorites_actions
-
+from gameapi.methods.Reviews import reviews_actions
 # Create your views here.
 
 # Create new user or get all users
@@ -53,3 +53,7 @@ def videogame_view(request, pk):
 @csrf_exempt
 def favorites_view(request):
     return favorites_actions(request=request)
+
+@csrf_exempt
+def reviews_view(request):
+    return reviews_actions(request=request)

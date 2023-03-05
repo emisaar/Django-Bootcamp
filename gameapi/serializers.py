@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User, Session, Company, Genre, Videogame, Favorite
+from .models import User, Session, Company, Genre, Videogame, Favorite, Review
 
 import bcrypt
 
@@ -67,6 +67,15 @@ class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         managed = True
         model = Favorite
+        fields = '__all__'
+
+    def __str__(self):
+        return self.title
+    
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        managed = True
+        model = Review
         fields = '__all__'
 
     def __str__(self):
