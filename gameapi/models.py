@@ -58,7 +58,7 @@ class Videogame(models.Model):
 # class VideogameImage(models.Model):
 #     id = models.AutoField(primary_key=True)
 #     videogame = models.ForeignKey(Videogame, on_delete=models.CASCADE)
-#     image_name = models.CharField(max_length=255)
+
 #     url = models.CharField(max_length=255)
 #     uploaded_at = models.DateTimeField(default=timezone.now)
 

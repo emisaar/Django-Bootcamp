@@ -14,10 +14,21 @@ def company_actions(request, pk):
     serialized_company = CompanySerializer(company_obj)
 
     if request.method == 'GET': # Get company
-        data = {
-            'data': serialized_company.data
+        # data = {
+        #     'data': serialized_company.data
+        # }
+        # return JsonResponse(data, status=200)
+        company_data = serialized_company.data
+        company_name = company_data['name']
+        company_country = company_data['country']
+        
+        data_dict = {
+            'id': company_data['id'],
+            'name': company_name,
+            'country': company_country,
         }
-        return JsonResponse(data, status=200)
+
+        return JsonResponse(data_dict, status=200)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
