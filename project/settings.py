@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import pymysql
-
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -84,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'videogames',  
-        'USER': 'emisaucedo',  
+        'USER': 'root',  
         'PASSWORD': 'bootcamp',  
         'HOST': 'localhost',  
         'PORT': '',
