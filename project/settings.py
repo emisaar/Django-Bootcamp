@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import pymysql
+from .local_settings import USER_DB
+from .local_settings import PASSWORD_DB
+from .local_settings import ALLOWED_HOSTS
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,8 +30,7 @@ SECRET_KEY = 'django-insecure-4zg2^7x4pmo@rxdfhmsj)40ua8y_s(&+=mdh43cw%4&isp=$1w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ALLOWED_HOSTS
 
 # Application definition
 
@@ -83,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'videogames',  
-        'USER': 'root',  
-        'PASSWORD': 'bootcamp',  
+        'USER': USER_DB,  
+        'PASSWORD': PASSWORD_DB,  
         'HOST': 'localhost',  
         'PORT': '',
     }
